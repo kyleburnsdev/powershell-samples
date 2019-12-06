@@ -1,0 +1,18 @@
+$output = @()
+
+Get-AzureRmResource | ForEach-Object { 
+    $resourceId = $_.ResourceId
+    $tags = $_.Tags
+    $tags | ForEach-Object {
+        if($_)
+        {
+            [HashTable] $hash = $_
+            $hash.Keys | ForEach-Object {
+                $o = [PSCustomObject] @{resourceId=$resourceId; tagName=[string]$_; tagValue=[string]$hash[$_]}
+                $output += $o
+            }
+        }
+    }
+}
+
+$output | Export-Csv "./tags.csv" -NoTypeInformation -Force
