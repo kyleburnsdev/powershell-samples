@@ -19,7 +19,7 @@
 Param(
 [Parameter(Mandatory=$true,HelpMessage="Enter the name of the storage account to use for export")][String]$StorageAccountName,
 [Parameter(Mandatory=$true,HelpMessage="Enter the name of the resource group containing the storage account to use for export")][String]$StorageAccountResourceGroupName,
-[Parameter(Mandatory=$true,HelpMessage="Value of startStopSchedule tag to select for inclusion")][string]$StorageAccountContainerName
+[Parameter(Mandatory=$true,HelpMessage="Enter the name of the storage container for export")][string]$StorageAccountContainerName
 )
 
 # establish automation credentials
